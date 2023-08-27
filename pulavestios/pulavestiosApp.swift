@@ -8,10 +8,38 @@
 import SwiftUI
 
 @main
-struct pulavestiosApp: App {
+struct PulavestApp: App {
+    var theme = ThemeManager()
+    @StateObject private var navigationState = NavigationState()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $navigationState.routes){
+                LoginPage().environmentObject(theme).environmentObject(navigationState).navigationDestination(for: Routes.self) { route in
+                    switch route {
+                    case .login:
+                        LoginPage()
+                    case .register:
+                        Text("loginpage")
+                    case .dashboard:
+                        Text("loginpage")
+                    case .invest:
+                        Text("loginpage")
+                    }
+                }
+            }
         }
     }
+}
+    
+    
+class NavigationState : ObservableObject{
+    @Published var routes : [Routes] = []
+}
+    
+    
+enum Routes{
+        case login
+        case register
+        case dashboard
+        case invest
 }

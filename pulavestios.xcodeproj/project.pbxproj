@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3919D19B2A9B653B00FF4808 /* primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919D19A2A9B653B00FF4808 /* primitives.swift */; };
 		3933ECD92A80BCEF0013DB35 /* pulavestiosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECD82A80BCEF0013DB35 /* pulavestiosApp.swift */; };
 		3933ECDB2A80BCEF0013DB35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECDA2A80BCEF0013DB35 /* ContentView.swift */; };
 		3933ECDD2A80BCF00013DB35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3933ECDC2A80BCF00013DB35 /* Assets.xcassets */; };
@@ -14,6 +15,19 @@
 		3933ECEA2A80BCF00013DB35 /* pulavestiosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECE92A80BCF00013DB35 /* pulavestiosTests.swift */; };
 		3933ECF42A80BCF00013DB35 /* pulavestiosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECF32A80BCF00013DB35 /* pulavestiosUITests.swift */; };
 		3933ECF62A80BCF00013DB35 /* pulavestiosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECF52A80BCF00013DB35 /* pulavestiosUITestsLaunchTests.swift */; };
+		3933ED072A80BF520013DB35 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ED062A80BF520013DB35 /* LoginPage.swift */; };
+		3933ED142A80C3860013DB35 /* outfit_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED0A2A80C3850013DB35 /* outfit_bold.ttf */; };
+		3933ED152A80C3860013DB35 /* outfit_extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED0B2A80C3850013DB35 /* outfit_extrabold.ttf */; };
+		3933ED162A80C3860013DB35 /* outfit_thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED0C2A80C3850013DB35 /* outfit_thin.ttf */; };
+		3933ED172A80C3860013DB35 /* outfit_extralight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED0D2A80C3850013DB35 /* outfit_extralight.ttf */; };
+		3933ED182A80C3860013DB35 /* outfit_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED0E2A80C3850013DB35 /* outfit_light.ttf */; };
+		3933ED192A80C3860013DB35 /* outfit_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED0F2A80C3860013DB35 /* outfit_regular.ttf */; };
+		3933ED1A2A80C3860013DB35 /* outfit_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED102A80C3860013DB35 /* outfit_medium.ttf */; };
+		3933ED1C2A80C3860013DB35 /* outfit_semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED122A80C3860013DB35 /* outfit_semibold.ttf */; };
+		3933ED1D2A80C3860013DB35 /* outfit_black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3933ED132A80C3860013DB35 /* outfit_black.ttf */; };
+		3933ED202A80CD2F0013DB35 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ED1F2A80CD2F0013DB35 /* ThemeProvider.swift */; };
+		398AF3622A94C02400851890 /* RegisterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398AF3612A94C02400851890 /* RegisterPage.swift */; };
+		398AF3642A94C05200851890 /* DashboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398AF3632A94C05200851890 /* DashboardPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3919D19A2A9B653B00FF4808 /* primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = primitives.swift; sourceTree = "<group>"; };
 		3933ECD52A80BCEF0013DB35 /* pulavestios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pulavestios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3933ECD82A80BCEF0013DB35 /* pulavestiosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulavestiosApp.swift; sourceTree = "<group>"; };
 		3933ECDA2A80BCEF0013DB35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +59,20 @@
 		3933ECEF2A80BCF00013DB35 /* pulavestiosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pulavestiosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3933ECF32A80BCF00013DB35 /* pulavestiosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulavestiosUITests.swift; sourceTree = "<group>"; };
 		3933ECF52A80BCF00013DB35 /* pulavestiosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulavestiosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3933ED062A80BF520013DB35 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		3933ED0A2A80C3850013DB35 /* outfit_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_bold.ttf; sourceTree = "<group>"; };
+		3933ED0B2A80C3850013DB35 /* outfit_extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_extrabold.ttf; sourceTree = "<group>"; };
+		3933ED0C2A80C3850013DB35 /* outfit_thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_thin.ttf; sourceTree = "<group>"; };
+		3933ED0D2A80C3850013DB35 /* outfit_extralight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_extralight.ttf; sourceTree = "<group>"; };
+		3933ED0E2A80C3850013DB35 /* outfit_light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_light.ttf; sourceTree = "<group>"; };
+		3933ED0F2A80C3860013DB35 /* outfit_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_regular.ttf; sourceTree = "<group>"; };
+		3933ED102A80C3860013DB35 /* outfit_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_medium.ttf; sourceTree = "<group>"; };
+		3933ED122A80C3860013DB35 /* outfit_semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_semibold.ttf; sourceTree = "<group>"; };
+		3933ED132A80C3860013DB35 /* outfit_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = outfit_black.ttf; sourceTree = "<group>"; };
+		3933ED1E2A80C7180013DB35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3933ED1F2A80CD2F0013DB35 /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
+		398AF3612A94C02400851890 /* RegisterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage.swift; sourceTree = "<group>"; };
+		398AF3632A94C05200851890 /* DashboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3919D1992A9B651100FF4808 /* aliases */ = {
+			isa = PBXGroup;
+			children = (
+				3919D19A2A9B653B00FF4808 /* primitives.swift */,
+			);
+			path = aliases;
+			sourceTree = "<group>";
+		};
 		3933ECCC2A80BCEF0013DB35 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +131,12 @@
 		3933ECD72A80BCEF0013DB35 /* pulavestios */ = {
 			isa = PBXGroup;
 			children = (
+				3933ED1E2A80C7180013DB35 /* Info.plist */,
+				3933ED082A80C2EA0013DB35 /* Assets */,
+				3933ED052A80BF380013DB35 /* Domain */,
+				3933ED042A80BF300013DB35 /* Data */,
+				3933ED032A80BF2A0013DB35 /* Core */,
+				3933ED022A80BEF80013DB35 /* Presentation */,
 				3933ECD82A80BCEF0013DB35 /* pulavestiosApp.swift */,
 				3933ECDA2A80BCEF0013DB35 /* ContentView.swift */,
 				3933ECDC2A80BCF00013DB35 /* Assets.xcassets */,
@@ -125,6 +168,71 @@
 				3933ECF52A80BCF00013DB35 /* pulavestiosUITestsLaunchTests.swift */,
 			);
 			path = pulavestiosUITests;
+			sourceTree = "<group>";
+		};
+		3933ED022A80BEF80013DB35 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				398AF3602A94C00600851890 /* Auth */,
+				398AF3632A94C05200851890 /* DashboardPage.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		3933ED032A80BF2A0013DB35 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3919D1992A9B651100FF4808 /* aliases */,
+				3933ED1F2A80CD2F0013DB35 /* ThemeProvider.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3933ED042A80BF300013DB35 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3933ED052A80BF380013DB35 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		3933ED082A80C2EA0013DB35 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3933ED092A80C2F70013DB35 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		3933ED092A80C2F70013DB35 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3933ED132A80C3860013DB35 /* outfit_black.ttf */,
+				3933ED0A2A80C3850013DB35 /* outfit_bold.ttf */,
+				3933ED0B2A80C3850013DB35 /* outfit_extrabold.ttf */,
+				3933ED0D2A80C3850013DB35 /* outfit_extralight.ttf */,
+				3933ED0E2A80C3850013DB35 /* outfit_light.ttf */,
+				3933ED102A80C3860013DB35 /* outfit_medium.ttf */,
+				3933ED0F2A80C3860013DB35 /* outfit_regular.ttf */,
+				3933ED122A80C3860013DB35 /* outfit_semibold.ttf */,
+				3933ED0C2A80C3850013DB35 /* outfit_thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		398AF3602A94C00600851890 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3933ED062A80BF520013DB35 /* LoginPage.swift */,
+				398AF3612A94C02400851890 /* RegisterPage.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +339,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3933ED1C2A80C3860013DB35 /* outfit_semibold.ttf in Resources */,
+				3933ED182A80C3860013DB35 /* outfit_light.ttf in Resources */,
+				3933ED1A2A80C3860013DB35 /* outfit_medium.ttf in Resources */,
+				3933ED142A80C3860013DB35 /* outfit_bold.ttf in Resources */,
+				3933ED192A80C3860013DB35 /* outfit_regular.ttf in Resources */,
+				3933ED162A80C3860013DB35 /* outfit_thin.ttf in Resources */,
 				3933ECE02A80BCF00013DB35 /* Preview Assets.xcassets in Resources */,
+				3933ED1D2A80C3860013DB35 /* outfit_black.ttf in Resources */,
 				3933ECDD2A80BCF00013DB35 /* Assets.xcassets in Resources */,
+				3933ED152A80C3860013DB35 /* outfit_extrabold.ttf in Resources */,
+				3933ED172A80C3860013DB35 /* outfit_extralight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +374,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				398AF3622A94C02400851890 /* RegisterPage.swift in Sources */,
+				3933ED202A80CD2F0013DB35 /* ThemeProvider.swift in Sources */,
 				3933ECDB2A80BCEF0013DB35 /* ContentView.swift in Sources */,
+				3933ED072A80BF520013DB35 /* LoginPage.swift in Sources */,
 				3933ECD92A80BCEF0013DB35 /* pulavestiosApp.swift in Sources */,
+				3919D19B2A9B653B00FF4808 /* primitives.swift in Sources */,
+				398AF3642A94C05200851890 /* DashboardPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +542,8 @@
 				DEVELOPMENT_TEAM = AAR3A23K7Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pulavestios/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +573,8 @@
 				DEVELOPMENT_TEAM = AAR3A23K7Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pulavestios/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
