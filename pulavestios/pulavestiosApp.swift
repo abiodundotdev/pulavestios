@@ -14,19 +14,19 @@ struct PulavestApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $navigationState.routes){
-                LoginPage().environmentObject(theme).environmentObject(navigationState).navigationDestination(for: Routes.self) { route in
+                LoginPage().navigationDestination(for: Routes.self) { route in
                     switch route {
                     case .login:
                         LoginPage()
                     case .register:
-                        Text("loginpage")
+                        RegisterPage()
                     case .dashboard:
                         Text("loginpage")
                     case .invest:
                         Text("loginpage")
                     }
                 }
-            }
+            }.environmentObject(theme).environmentObject(navigationState)
         }
     }
 }

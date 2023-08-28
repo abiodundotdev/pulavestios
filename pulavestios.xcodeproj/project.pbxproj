@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3919D19B2A9B653B00FF4808 /* primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919D19A2A9B653B00FF4808 /* primitives.swift */; };
+		3919D19F2A9BDEC300FF4808 /* AuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919D19E2A9BDEC300FF4808 /* AuthRepositoryInterface.swift */; };
+		3919D1A32A9BDF2200FF4808 /* LoginRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919D1A22A9BDF2200FF4808 /* LoginRequestData.swift */; };
+		3919D1A62A9BDF7E00FF4808 /* AuthRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919D1A52A9BDF7E00FF4808 /* AuthRepositoryImp.swift */; };
+		3919D1A92A9BE0A200FF4808 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3919D1A82A9BE0A200FF4808 /* Alamofire */; };
+		3919D1AC2A9BE17200FF4808 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919D1AB2A9BE17200FF4808 /* HttpClient.swift */; };
+		392A23642A9BE786006ACBC3 /* AFHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392A23632A9BE786006ACBC3 /* AFHttpClient.swift */; };
 		3933ECD92A80BCEF0013DB35 /* pulavestiosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECD82A80BCEF0013DB35 /* pulavestiosApp.swift */; };
 		3933ECDB2A80BCEF0013DB35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECDA2A80BCEF0013DB35 /* ContentView.swift */; };
 		3933ECDD2A80BCF00013DB35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3933ECDC2A80BCF00013DB35 /* Assets.xcassets */; };
@@ -49,6 +55,11 @@
 
 /* Begin PBXFileReference section */
 		3919D19A2A9B653B00FF4808 /* primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = primitives.swift; sourceTree = "<group>"; };
+		3919D19E2A9BDEC300FF4808 /* AuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryInterface.swift; sourceTree = "<group>"; };
+		3919D1A22A9BDF2200FF4808 /* LoginRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestData.swift; sourceTree = "<group>"; };
+		3919D1A52A9BDF7E00FF4808 /* AuthRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImp.swift; sourceTree = "<group>"; };
+		3919D1AB2A9BE17200FF4808 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		392A23632A9BE786006ACBC3 /* AFHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHttpClient.swift; sourceTree = "<group>"; };
 		3933ECD52A80BCEF0013DB35 /* pulavestios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pulavestios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3933ECD82A80BCEF0013DB35 /* pulavestiosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulavestiosApp.swift; sourceTree = "<group>"; };
 		3933ECDA2A80BCEF0013DB35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3919D1A92A9BE0A200FF4808 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +120,53 @@
 			path = aliases;
 			sourceTree = "<group>";
 		};
+		3919D19C2A9BDE7300FF4808 /* interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				3919D1AB2A9BE17200FF4808 /* HttpClient.swift */,
+			);
+			path = interfaces;
+			sourceTree = "<group>";
+		};
+		3919D19D2A9BDE9400FF4808 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				3919D19E2A9BDEC300FF4808 /* AuthRepositoryInterface.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		3919D1A02A9BDEEA00FF4808 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		3919D1A12A9BDEFB00FF4808 /* request_data */ = {
+			isa = PBXGroup;
+			children = (
+				3919D1A22A9BDF2200FF4808 /* LoginRequestData.swift */,
+			);
+			path = request_data;
+			sourceTree = "<group>";
+		};
+		3919D1A42A9BDF5A00FF4808 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				3919D1A52A9BDF7E00FF4808 /* AuthRepositoryImp.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		3919D1AA2A9BE15100FF4808 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				392A23632A9BE786006ACBC3 /* AFHttpClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		3933ECCC2A80BCEF0013DB35 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +190,7 @@
 		3933ECD72A80BCEF0013DB35 /* pulavestios */ = {
 			isa = PBXGroup;
 			children = (
+				3919D1AA2A9BE15100FF4808 /* Services */,
 				3933ED1E2A80C7180013DB35 /* Info.plist */,
 				3933ED082A80C2EA0013DB35 /* Assets */,
 				3933ED052A80BF380013DB35 /* Domain */,
@@ -191,6 +251,7 @@
 		3933ED042A80BF300013DB35 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3919D1A42A9BDF5A00FF4808 /* repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -198,6 +259,10 @@
 		3933ED052A80BF380013DB35 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3919D1A12A9BDEFB00FF4808 /* request_data */,
+				3919D1A02A9BDEEA00FF4808 /* models */,
+				3919D19D2A9BDE9400FF4808 /* repository */,
+				3919D19C2A9BDE7300FF4808 /* interfaces */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -251,6 +316,9 @@
 			dependencies = (
 			);
 			name = pulavestios;
+			packageProductDependencies = (
+				3919D1A82A9BE0A200FF4808 /* Alamofire */,
+			);
 			productName = pulavestios;
 			productReference = 3933ECD52A80BCEF0013DB35 /* pulavestios.app */;
 			productType = "com.apple.product-type.application";
@@ -323,6 +391,9 @@
 				Base,
 			);
 			mainGroup = 3933ECCC2A80BCEF0013DB35;
+			packageReferences = (
+				3919D1A72A9BE0A200FF4808 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 3933ECD62A80BCEF0013DB35 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -377,8 +448,13 @@
 				398AF3622A94C02400851890 /* RegisterPage.swift in Sources */,
 				3933ED202A80CD2F0013DB35 /* ThemeProvider.swift in Sources */,
 				3933ECDB2A80BCEF0013DB35 /* ContentView.swift in Sources */,
+				392A23642A9BE786006ACBC3 /* AFHttpClient.swift in Sources */,
+				3919D19F2A9BDEC300FF4808 /* AuthRepositoryInterface.swift in Sources */,
+				3919D1A62A9BDF7E00FF4808 /* AuthRepositoryImp.swift in Sources */,
 				3933ED072A80BF520013DB35 /* LoginPage.swift in Sources */,
 				3933ECD92A80BCEF0013DB35 /* pulavestiosApp.swift in Sources */,
+				3919D1AC2A9BE17200FF4808 /* HttpClient.swift in Sources */,
+				3919D1A32A9BDF2200FF4808 /* LoginRequestData.swift in Sources */,
 				3919D19B2A9B653B00FF4808 /* primitives.swift in Sources */,
 				398AF3642A94C05200851890 /* DashboardPage.swift in Sources */,
 			);
@@ -709,6 +785,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3919D1A72A9BE0A200FF4808 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3919D1A82A9BE0A200FF4808 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3919D1A72A9BE0A200FF4808 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3933ECCD2A80BCEF0013DB35 /* Project object */;
 }

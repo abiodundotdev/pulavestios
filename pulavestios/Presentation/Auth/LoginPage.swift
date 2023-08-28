@@ -14,7 +14,6 @@ struct LoginPage: View {
 
     @State private var emailAddressController : String = ""
     //let currentTheme = self.theme.current
-    
     var body: some View {
         return ScrollView(){
             VStack(alignment: .center){
@@ -27,11 +26,11 @@ struct LoginPage: View {
                 Text("Kindly fill in the form to continue")
                 10.vspacer
                 LabeledForm(label: "Email address", value: $emailAddressController)
-                Button("Tap me to login to register page"){
-                    navigator.routes.append(Routes.register)
-                }
+                10.vspacer
+                LabeledSecureForm(label: "Password", value: $emailAddressController )
+                10.vspacer
                 ContainedButton(title: "Login" ) {
-                    print("Hello")
+                    navigator.routes.append(Routes.register)
                 }
             }
         }.padding(.all, 15.0)
@@ -58,9 +57,22 @@ struct LabeledForm : View {
 }
 
 
+struct LabeledSecureForm : View {
+    var label : String
+    @Binding var value : String;
+    var body  : some View {
+        VStack( alignment: .leading){
+            Text(label).font(.caption)
+            10.vspacer
+            SecureField(label, text: $value) .textFieldStyle(RoundedBorderTextFieldStyle())
+        }
+    }
+}
+
+
 struct ContainedButton : View {
     @EnvironmentObject var theme: ThemeManager
-    var disabled: Bool = true
+    var disabled: Bool = false
     var title : String
     var action : VoidCallback
     var body  : some View {
