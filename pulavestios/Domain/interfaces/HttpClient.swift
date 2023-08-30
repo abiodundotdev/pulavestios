@@ -7,7 +7,11 @@
 
 import Foundation
 protocol HttpClientInterface{
-    func get<Response>(url : String) -> Response
-    func post<Response>(url : String, data : Codable) -> Response
-    func form<Response>(url : String, data : Codable) -> Response
+    associatedtype Response
+    func get(url : String) async throws -> Response
+    func post(url : String, data : Encodable) async throws  -> Response
+    func form(url : String, data : Codable) async throws  -> Response
 }
+
+
+

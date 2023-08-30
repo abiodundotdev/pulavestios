@@ -14,6 +14,9 @@
 		3919D1A92A9BE0A200FF4808 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3919D1A82A9BE0A200FF4808 /* Alamofire */; };
 		3919D1AC2A9BE17200FF4808 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3919D1AB2A9BE17200FF4808 /* HttpClient.swift */; };
 		392A23642A9BE786006ACBC3 /* AFHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392A23632A9BE786006ACBC3 /* AFHttpClient.swift */; };
+		392A23672A9DA9D4006ACBC3 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392A23662A9DA9D4006ACBC3 /* EndPoints.swift */; };
+		392A236A2A9DFACD006ACBC3 /* LoginResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392A23692A9DFACD006ACBC3 /* LoginResponseData.swift */; };
+		392A236C2A9DFB2C006ACBC3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392A236B2A9DFB2C006ACBC3 /* UserModel.swift */; };
 		3933ECD92A80BCEF0013DB35 /* pulavestiosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECD82A80BCEF0013DB35 /* pulavestiosApp.swift */; };
 		3933ECDB2A80BCEF0013DB35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933ECDA2A80BCEF0013DB35 /* ContentView.swift */; };
 		3933ECDD2A80BCF00013DB35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3933ECDC2A80BCF00013DB35 /* Assets.xcassets */; };
@@ -60,6 +63,9 @@
 		3919D1A52A9BDF7E00FF4808 /* AuthRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImp.swift; sourceTree = "<group>"; };
 		3919D1AB2A9BE17200FF4808 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		392A23632A9BE786006ACBC3 /* AFHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFHttpClient.swift; sourceTree = "<group>"; };
+		392A23662A9DA9D4006ACBC3 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		392A23692A9DFACD006ACBC3 /* LoginResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseData.swift; sourceTree = "<group>"; };
+		392A236B2A9DFB2C006ACBC3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		3933ECD52A80BCEF0013DB35 /* pulavestios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pulavestios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3933ECD82A80BCEF0013DB35 /* pulavestiosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pulavestiosApp.swift; sourceTree = "<group>"; };
 		3933ECDA2A80BCEF0013DB35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 		3919D1A02A9BDEEA00FF4808 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				392A236B2A9DFB2C006ACBC3 /* UserModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -165,6 +172,22 @@
 				392A23632A9BE786006ACBC3 /* AFHttpClient.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		392A23652A9DA9B0006ACBC3 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				392A23662A9DA9D4006ACBC3 /* EndPoints.swift */,
+			);
+			path = constants;
+			sourceTree = "<group>";
+		};
+		392A23682A9DFAB5006ACBC3 /* response_data */ = {
+			isa = PBXGroup;
+			children = (
+				392A23692A9DFACD006ACBC3 /* LoginResponseData.swift */,
+			);
+			path = response_data;
 			sourceTree = "<group>";
 		};
 		3933ECCC2A80BCEF0013DB35 = {
@@ -242,6 +265,7 @@
 		3933ED032A80BF2A0013DB35 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				392A23652A9DA9B0006ACBC3 /* constants */,
 				3919D1992A9B651100FF4808 /* aliases */,
 				3933ED1F2A80CD2F0013DB35 /* ThemeProvider.swift */,
 			);
@@ -259,6 +283,7 @@
 		3933ED052A80BF380013DB35 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				392A23682A9DFAB5006ACBC3 /* response_data */,
 				3919D1A12A9BDEFB00FF4808 /* request_data */,
 				3919D1A02A9BDEEA00FF4808 /* models */,
 				3919D19D2A9BDE9400FF4808 /* repository */,
@@ -447,8 +472,10 @@
 			files = (
 				398AF3622A94C02400851890 /* RegisterPage.swift in Sources */,
 				3933ED202A80CD2F0013DB35 /* ThemeProvider.swift in Sources */,
+				392A236A2A9DFACD006ACBC3 /* LoginResponseData.swift in Sources */,
 				3933ECDB2A80BCEF0013DB35 /* ContentView.swift in Sources */,
 				392A23642A9BE786006ACBC3 /* AFHttpClient.swift in Sources */,
+				392A23672A9DA9D4006ACBC3 /* EndPoints.swift in Sources */,
 				3919D19F2A9BDEC300FF4808 /* AuthRepositoryInterface.swift in Sources */,
 				3919D1A62A9BDF7E00FF4808 /* AuthRepositoryImp.swift in Sources */,
 				3933ED072A80BF520013DB35 /* LoginPage.swift in Sources */,
@@ -456,6 +483,7 @@
 				3919D1AC2A9BE17200FF4808 /* HttpClient.swift in Sources */,
 				3919D1A32A9BDF2200FF4808 /* LoginRequestData.swift in Sources */,
 				3919D19B2A9B653B00FF4808 /* primitives.swift in Sources */,
+				392A236C2A9DFB2C006ACBC3 /* UserModel.swift in Sources */,
 				398AF3642A94C05200851890 /* DashboardPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

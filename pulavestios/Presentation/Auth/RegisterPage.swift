@@ -7,14 +7,15 @@
 
 import Foundation
 import SwiftUI
+import Alamofire
 
 struct RegisterPage :View {
     @State private var firstName : String = ""
     @State private var lastName : String = ""
     @State private var emailAddress : String = ""
     @State private var country : String = ""
-
-
+    
+    
     var body : some View {
         return ScrollView{
             VStack(alignment: .leading){
@@ -32,7 +33,10 @@ struct RegisterPage :View {
                         LabeledForm(label: "Country", value: $country)
                         10.vspacer
                         ContainedButton(title: "Register"){
-                            print("i am calling on you oo")
+                            var task = Task{
+                              try await testHttpRequest()
+                            }
+                        
                         }
                     }
                 }
@@ -40,6 +44,64 @@ struct RegisterPage :View {
             }
         }.padding(.all, 15.0)
     }
+    
+    func testHttpRequest() async throws {
+        let url  = "https://api.mockfly.dev/mocks/f093e772-faf0-4595-8b38-7959c7b48235/user"
+        do {
+//            let request = AF.request(url, method: .get).responseDecodable(of:UserModel.self){response in
+//                debugPrint(response)
+//                }
+//            AF.request(url).response { response in
+//                debugPrint("Response with unserialized data: \(String(describing: response))")
+//            }
+            
+//            AF.request(url).responseData { response in
+//                debugPrint("Response: \(String(from: response.value))")
+//            }
+            
+//            AF.request(url).responseString { response in
+//                debugPrint("Response: \(response.data)")
+//            }
+            
+
+//            AF.request(url).responseDecodable(of: UserModel.self) { response in
+//                debugPrint("Response: \(response.value)")
+//            }
+            
+        }catch{
+            print(error)
+        }
+            
+        
+    }
+    
+//        .responseData{
+//            respone in
+//            print("The network request data is  \(String(data: respone.data ?? Data(), encoding: .utf8)) ")
+//        }
+        
+    
+    
+    func testHttpRequestTwo() async throws {
+        
+        do {
+            guard let url = URL(string : "https://api.mockfly.dev/mocks/f093e772-faf0-4595-8b38-7959c7b48235/user")else { return }
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                  print("I am an invalid response ooo")
+                return
+            }
+            print("Response data as string: \(String(describing: String(data: data, encoding: .utf8)))")
+                
+        }catch{
+            print(error)
+        }
+            
+        
+    }
+    
+    
+    
 }
 
 
