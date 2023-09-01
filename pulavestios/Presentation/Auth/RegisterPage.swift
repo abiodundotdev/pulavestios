@@ -63,9 +63,16 @@ struct RegisterPage :View {
 //                debugPrint("Response: \(response.data)")
 //            }
             
-
+            
+//
 //            AF.request(url).responseDecodable(of: UserModel.self) { response in
-//                debugPrint("Response: \(response.value)")
+//                    switch response.result {
+//                        case .success:
+//                            print("Successful")
+//                    case let .failure(error):
+//                        print(error)
+//                        }
+//                //debugPrint("Response: \(response.value)")
 //            }
             
         }catch{

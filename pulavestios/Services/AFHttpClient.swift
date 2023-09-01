@@ -21,7 +21,7 @@ class AFHttpClient : HttpClientInterface{
     }
     
     func post(url: String, data: Encodable) async throws -> DataRequest {
-        var response = session.request(url, method: .post, parameters: data, encoder: JSONParameterEncoder.default).validate()
+        var response = session.request(url, method: .post, parameters: data, encoder: JSONParameterEncoder.default)
         return response;
     }
     
@@ -30,4 +30,26 @@ class AFHttpClient : HttpClientInterface{
          return response;
     }
     
+    private func request(dataRequest: DataRequest) async throws ->  (Data?, HTTPURLResponse?)? {
+        var _error : AFError?
+        var _response : (Data?, HTTPURLResponse?)?
+            dataRequest
+            .validate()
+            .responseData{response in
+            switch response.result {
+                    case .success:
+                    _response = (response.data, response.response)
+                    case let .failure(error):
+                        _error = error
+                }
+            }
+        if(_error != nil) {
+            throw _error!;
+        }
+        return _response;
+    }
 }
+
+
+
+//typealias
