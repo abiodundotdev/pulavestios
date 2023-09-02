@@ -18,8 +18,10 @@ class AuthViewModel : ObservableObject{
         do{
             var resData = try await repository.auth.login(requestData: loginRequestData)
             user = resData.user;
+            print(user)
+            isLoading = false
         }catch{
-            
+            isLoading = false
         }
     }
 }

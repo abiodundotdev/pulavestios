@@ -11,9 +11,13 @@ import SwiftUI
 struct LoginPage: View {
     @EnvironmentObject var theme: ThemeManager
     @EnvironmentObject var navigator: NavigationState
-
     @State private var emailAddressController : String = ""
+    @State private var passwordController : String = ""
+
     //let currentTheme = self.theme.current
+    
+    @StateObject var authViewModel = AuthViewModel()
+
     var body: some View {
         return ScrollView(){
             VStack(alignment: .center){
@@ -27,13 +31,25 @@ struct LoginPage: View {
                 10.vspacer
                 LabeledForm(label: "Email address", value: $emailAddressController)
                 10.vspacer
-                LabeledSecureForm(label: "Password", value: $emailAddressController )
+                LabeledSecureForm(label: "Password", value: $passwordController)
                 10.vspacer
                 ContainedButton(title: "Login" ) {
-                    navigator.routes.append(Routes.register)
+                    Task{
+                        await handleSubmit()
+                    }
                 }
             }
         }.padding(.all, 15.0)
+    }
+    
+    func handleSubmit() async {
+        guard (!emailAddressController.isEmpty && !passwordController.isEmpty) else {
+            print("Email or password cannot be empty")
+            return;
+        }
+        let loginreq = LoginRequestData(email: emailAddressController, password: passwordController)
+        try? await  authViewModel.login(loginRequestData: loginreq)
+        //navigator.routes.append(Routes.register)
     }
 }
 
