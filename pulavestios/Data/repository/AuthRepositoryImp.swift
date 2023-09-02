@@ -8,29 +8,35 @@
 import Foundation
 import Alamofire
 
-//class AuthRepositoryImpl : AuthRepositoryInterface {
-//    private var httpClient : any HttpClientInterface;
-//
-//    init(httpClient: any HttpClientInterface) {
-//        self.httpClient = httpClient
-//    }
-//
-//    func login(requestData: LoginRequestData) async throws -> LoginRequestData {
-//        var response = try await httpClient.post(url: Endpoints.login, data: requestData);
-//        let decoder = JSONDecoder()
-//        let responseData = try decoder.decode(LoginRequestData.self, from: response.)
-//
-//    }
-//
-//
-//}
-//
-//
-//class AppResponse<Data>{
-//    var message : String
-//    var data : Data
-//    init(response: DataRequest) {
-//        self.message = response.
-//        self.data = data
-//    }
-//}
+class AuthRepositoryImpl : AuthRepositoryInterface {
+    private var httpClient : any HttpClientInterface;
+    
+    init(httpClient: any HttpClientInterface) {
+        self.httpClient = httpClient
+    }
+    
+    func login(requestData: LoginRequestData) async throws -> LoginResponseData {
+        let (data, response) = try await httpClient.post(url: Endpoints.login, data: requestData) as! AppResponse;
+       let appResponse  = AppHttpResponse<LoginResponseData>(data: data)
+        return appResponse.decodedData;
+    }
+}
+
+class AppHttpResponse<U : Codable> {
+    var decodedData : U;
+    init(data : Data?){
+        let decoder = JSONDecoder()
+        do{
+            let responseData = try decoder.decode(U.self, from: data!)
+            decodedData = responseData
+        }catch {
+            print(error)
+            decodedData = ErrorMessage(message: "Error occur with handling") as! U
+        }
+    }
+}
+
+
+struct ErrorMessage :Codable{
+    var message : String
+}
