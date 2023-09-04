@@ -18,7 +18,8 @@ class AuthRepositoryImpl : AuthRepositoryInterface {
     func login(requestData: LoginRequestData) async throws -> LoginResponseData {
         let (data, response) = try await httpClient.post(url: Endpoints.login, data: requestData) as! AppResponse;
        let appResponse  = AppHttpResponse<LoginResponseData>(data: data)
-        return appResponse.decodedData;
+        print(appResponse.decodedData)
+        return appResponse.decodedData
     }
 }
 

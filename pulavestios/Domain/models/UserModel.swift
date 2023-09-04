@@ -22,7 +22,7 @@ struct UserModel: Codable {
     
         enum CodingKeys: String, CodingKey {
           case id, uuid, firstname, lastname, walletBalance, fullname, accountNumber, accountName, bankName, email, phone, profileImage
-          case currentDeviceID 
+          case currentDeviceID = "currentDeviceId"
           case currentDeviceName, lastLogin
           case lastLoginIP
           case appVersion, platform, efgTag, isEmailVerified, isPinSet, isTagSet

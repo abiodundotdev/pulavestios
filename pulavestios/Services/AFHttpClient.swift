@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class AFHttpClient : HttpClientInterface{
+actor AFHttpClient : HttpClientInterface{
     
     var session : Session
     init(session: Session) {
@@ -31,27 +31,30 @@ class AFHttpClient : HttpClientInterface{
     }
     
     private func request(dataRequest: DataRequest) async throws ->  (Data?, HTTPURLResponse?) {
-        var _error : AFError?
-        var _response : (Data?, HTTPURLResponse?)
-            dataRequest
-            .validate()
-            .responseData{response in
-            switch response.result {
-                    case .success:
-                    guard let _ = response.data else {
-                        _error = .none
-                        return
+        return try await withCheckedThrowingContinuation{continuation in
+            var _response : (Data?, HTTPURLResponse?)
+                dataRequest
+                .validate()
+                .responseData{response in
+                switch response.result {
+                        case .success:
+                        guard let _ = response.data else {
+                           // _error = .none
+                            return
+                        }
+                        //_response = (response.data!, response.response)
+                        continuation.resume(returning: (response.data!, response.response))
+                        break
+                        case let .failure(error):
+                           // _error = error
+                        continuation.resume(throwing:  error)
                     }
-                    _response = (response.data!, response.response)
-                    break
-                    case let .failure(error):
-                        _error = error
                 }
-            }
-        if(_error != nil) {
-            throw _error!;
+//            if(_error != nil) {
+//                throw _error!;
+//            }
+           
         }
-        return _response;
     }
 }
 

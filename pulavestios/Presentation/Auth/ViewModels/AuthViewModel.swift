@@ -15,13 +15,16 @@ class AuthViewModel : ObservableObject{
     @Injected(\.repository) private var repository
     
     func login( loginRequestData : LoginRequestData) async throws{
-        do{
-            var resData = try await repository.auth.login(requestData: loginRequestData)
-            user = resData.user;
-            print(user)
-            isLoading = false
-        }catch{
-            isLoading = false
+                if let res = try? await repository.auth.login(requestData: loginRequestData) {
+                   await MainActor.run {
+                       self.user = res.user
+                       self.isLoading = true
+                   }
+               } else {
+                   await MainActor.run {
+                       self.isLoading = false
+                   }
+               }
         }
     }
-}
+

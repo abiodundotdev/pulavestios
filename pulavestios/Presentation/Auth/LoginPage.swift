@@ -67,7 +67,7 @@ struct LabeledForm : View {
         VStack( alignment: .leading){
             Text(label).font(.caption)
             10.vspacer
-            TextField(label, text: $value) .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField(label, text: $value).textFieldStyle(RoundedBorderTextFieldStyle()).border( value.isEmpty ? Color.gray : Color.red )
         }
     }
 }
@@ -80,7 +80,7 @@ struct LabeledSecureForm : View {
         VStack( alignment: .leading){
             Text(label).font(.caption)
             10.vspacer
-            SecureField(label, text: $value) .textFieldStyle(RoundedBorderTextFieldStyle())
+            SecureField(label, text: $value) .textFieldStyle(RoundedBorderTextFieldStyle() )
         }
     }
 }
