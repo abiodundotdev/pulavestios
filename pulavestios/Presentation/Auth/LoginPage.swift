@@ -38,6 +38,7 @@ struct LoginPage: View {
                         await handleSubmit()
                     }
                 }
+                //Text(authViewModel.user?.fullname ?? "N/A")
             }
         }.padding(.all, 15.0)
     }
@@ -49,7 +50,7 @@ struct LoginPage: View {
         }
         let loginreq = LoginRequestData(email: emailAddressController, password: passwordController)
         try? await  authViewModel.login(loginRequestData: loginreq)
-        //navigator.routes.append(Routes.register)
+        navigator.routes.append(Routes.register)
     }
 }
 
