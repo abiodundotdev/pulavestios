@@ -9,8 +9,11 @@ import Foundation
 import SwiftUI
 
 struct LoginPage: View {
+    
     @EnvironmentObject var theme: ThemeManager
     @EnvironmentObject var navigator: NavigationState
+    @EnvironmentObject var appState: AppState
+    
     @State private var emailAddressController : String = ""
     @State private var passwordController : String = ""
 

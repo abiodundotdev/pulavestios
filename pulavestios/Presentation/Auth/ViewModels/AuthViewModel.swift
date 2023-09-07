@@ -9,22 +9,60 @@ import Foundation
 import Factory
 
 class AuthViewModel : ObservableObject{
-    @Published var user : UserModel?
-    @Published var isLoading : Bool = true
+    init(appState : AppState) {
+        self.appState = appState
+    }
+    var appState: AppState
     
     @Injected(\.repository) private var repository
     
     func login( loginRequestData : LoginRequestData) async throws{
-                if let res = try? await repository.auth.login(requestData: loginRequestData) {
-                   await MainActor.run {
-                       self.user = res.user
-                       self.isLoading = true
-                   }
-               } else {
-                   await MainActor.run {
-                       self.isLoading = false
-                   }
+        do{
+           let res = try await repository.auth.login(requestData: loginRequestData)
+               await MainActor.run {
+                   appState.user = UserCompleted(value: res.user)
                }
+           }catch{
+            await MainActor.run {
+                appState.user = UserError(message: error.localizedDescription)
+            }
         }
     }
+    }
 
+
+
+
+
+class AppState : ObservableObject{
+    init(user: UserState) {
+        self.user = user
+    }
+    @Published var user: UserState
+}
+
+
+protocol UserState{}
+
+
+struct UserLoading : UserState{}
+struct  UserCompleted : UserState{
+    var value : UserModel;
+}
+struct UserError : UserState{
+    var message : String
+}
+
+extension UserState{
+    var isLoading : Bool {
+        self is UserLoading
+    }
+    
+    var isCompleted : Bool {
+        self is UserCompleted
+    }
+    
+    var hasError : Bool {
+        self is UserError
+    }
+}

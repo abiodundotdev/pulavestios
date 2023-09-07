@@ -11,6 +11,8 @@ import SwiftUI
 struct PulavestApp: App {
     var theme = ThemeManager()
     @StateObject private var navigationState = NavigationState()
+    @StateObject private var appState = AppState(user: UserLoading())
+
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $navigationState.routes){
@@ -26,7 +28,7 @@ struct PulavestApp: App {
                         Text("loginpage")
                     }
                 }
-            }.environmentObject(theme).environmentObject(navigationState)
+            }.environmentObject(theme).environmentObject(navigationState).environmentObject(appState)
         }
     }
 }
