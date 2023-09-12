@@ -19,7 +19,7 @@ struct LoginPage: View {
 
     //let currentTheme = self.theme.current
     
-    @StateObject var authViewModel = AuthViewModel()
+    @StateObject var authViewModel = AuthViewModel();
 
     var body: some View {
         return ScrollView(){
