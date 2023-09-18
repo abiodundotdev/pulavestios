@@ -7,6 +7,7 @@
 
 import Foundation
 import Factory
+import Combine
 
 class AuthViewModel : ObservableObject{
     init(appState : AppState) {
@@ -34,18 +35,19 @@ class AuthViewModel : ObservableObject{
 
 
 
-class AppState : ObservableObject{
+class AppState{
     init(user: UserState) {
         self.user = user
     }
     @Published var user: UserState
 }
-
+ 
 
 protocol UserState{}
 
 
 struct UserLoading : UserState{}
+
 struct  UserCompleted : UserState{
     var value : UserModel;
 }
@@ -65,4 +67,8 @@ extension UserState{
     var hasError : Bool {
         self is UserError
     }
+}
+
+func name(){
+    var sub =  PassthroughSubject<String, Never>();
 }
