@@ -9,10 +9,12 @@ import Foundation
 import Factory
 import Combine
 
-class AuthViewModel : ObservableObject{
+class AuthViewModel{
+    
     init(appState : AppState) {
         self.appState = appState
     }
+    
     var appState: AppState
     
     @Injected(\.repository) private var repository
@@ -23,7 +25,7 @@ class AuthViewModel : ObservableObject{
                await MainActor.run {
                    appState.user = UserCompleted(value: res.user)
                }
-           }catch{
+           } catch {
             await MainActor.run {
                 appState.user = UserError(message: error.localizedDescription)
             }
@@ -39,11 +41,14 @@ class AppState{
     init(user: UserState) {
         self.user = user
     }
-    @Published var user: UserState
+    var user: UserState
 }
+
+
+protocol AnyState{}
  
 
-protocol UserState{}
+protocol UserState: AnyState{}
 
 
 struct UserLoading : UserState{}
