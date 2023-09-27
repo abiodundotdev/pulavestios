@@ -9,7 +9,7 @@ import Foundation
 import Factory
 import Combine
 
-class AuthViewModel{
+class AuthUseCases{
     
     init(appState : AppState) {
         self.appState = appState
