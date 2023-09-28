@@ -9,7 +9,7 @@ import Foundation
 import Factory
 import Combine
 
-class AuthUseCases{
+class AuthViewModel{
     
     init(appState : AppState) {
         self.appState = appState
@@ -18,7 +18,7 @@ class AuthUseCases{
     var appState: AppState
     
     @Injected(\.repository) private var repository
-    
+
     func login( loginRequestData : LoginRequestData) async throws{
         do{
            let res = try await repository.auth.login(requestData: loginRequestData)
