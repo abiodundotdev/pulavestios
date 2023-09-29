@@ -9,11 +9,13 @@ import Foundation
 import Factory
 import Combine
 
-class AuthViewModel{
+class AuthViewModel: ObservableObject{
     
     init(appState : AppState) {
         self.appState = appState
     }
+    
+    //@State private var name : String = "Qazeem Abiodun"
     
     var appState: AppState
     
@@ -37,7 +39,7 @@ class AuthViewModel{
 
 
 
-class AppState{
+class AppState: ObservableObject{
     init(user: UserState) {
         self.user = user
     }

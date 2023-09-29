@@ -16,10 +16,10 @@ struct LoginPage: View {
     
     @State private var emailAddressController : String = ""
     @State private var passwordController : String = ""
-
-    //let currentTheme = self.theme.current
     
-    @StateObject var authViewModel = AuthViewModel();
+    @State private var number : Int = 2
+    
+    @StateObject var authViewModel = AuthViewModel( appState: AppState(user: UserLoading()));
 
     var body: some View {
         return ScrollView(){
@@ -38,12 +38,15 @@ struct LoginPage: View {
                 10.vspacer
                 ContainedButton(title: "Login" ) {
                     Task{
-                        await handleSubmit()
+                       // mainStore.subscribe(self)
+                       // await handleSubmit()
                     }
                 }
                 //Text(authViewModel.user?.fullname ?? "N/A")
             }
-        }.padding(.all, 15.0)
+        }.padding(.all, 15.0).onAppear(
+           // mainStore.subscribe(self)
+        )
     }
     
     func handleSubmit() async {

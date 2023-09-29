@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ReSwift
 
 @main
 struct PulavestApp: App {
@@ -38,6 +39,11 @@ class NavigationState : ObservableObject{
     @Published var routes : [Routes] = []
 }
     
+
+let mainStore = Store<AppState2>(
+    reducer: counterReducer,
+    state: nil
+)
     
 enum Routes{
         case login
@@ -45,3 +51,30 @@ enum Routes{
         case dashboard
         case invest
 }
+
+
+struct AppState2 {
+    var counter: Int = 0
+}
+
+
+struct CounterActionIncrease: Action {}
+struct CounterActionDecrease: Action {}
+
+
+func counterReducer(action: Action, state: AppState2?) -> AppState2 {
+    var state = state ?? AppState2()
+
+    switch action {
+    case _ as CounterActionIncrease:
+        state.counter += 1
+    case _ as CounterActionDecrease:
+        state.counter -= 1
+    default:
+        break
+    }
+
+    return state
+}
+
+

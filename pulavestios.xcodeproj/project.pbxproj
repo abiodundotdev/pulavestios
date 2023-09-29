@@ -42,6 +42,7 @@
 		394DF38D2AA2F19C000FF454 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394DF38C2AA2F19C000FF454 /* Repository.swift */; };
 		398AF3622A94C02400851890 /* RegisterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398AF3612A94C02400851890 /* RegisterPage.swift */; };
 		398AF3642A94C05200851890 /* DashboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398AF3632A94C05200851890 /* DashboardPage.swift */; };
+		39BDC3862AC69CCC00FD3080 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 39BDC3852AC69CCC00FD3080 /* ReSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39BDC3862AC69CCC00FD3080 /* ReSwift in Frameworks */,
 				3919D1A92A9BE0A200FF4808 /* Alamofire in Frameworks */,
 				394DF3892AA2F0BC000FF454 /* Factory in Frameworks */,
 			);
@@ -366,6 +368,7 @@
 			packageProductDependencies = (
 				3919D1A82A9BE0A200FF4808 /* Alamofire */,
 				394DF3882AA2F0BC000FF454 /* Factory */,
+				39BDC3852AC69CCC00FD3080 /* ReSwift */,
 			);
 			productName = pulavestios;
 			productReference = 3933ECD52A80BCEF0013DB35 /* pulavestios.app */;
@@ -442,6 +445,7 @@
 			packageReferences = (
 				3919D1A72A9BE0A200FF4808 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				394DF3872AA2F0BB000FF454 /* XCRemoteSwiftPackageReference "Factory" */,
+				39BDC3842AC69CCC00FD3080 /* XCRemoteSwiftPackageReference "ReSwift" */,
 			);
 			productRefGroup = 3933ECD62A80BCEF0013DB35 /* Products */;
 			projectDirPath = "";
@@ -859,6 +863,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		39BDC3842AC69CCC00FD3080 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReSwift/ReSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -871,6 +883,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 394DF3872AA2F0BB000FF454 /* XCRemoteSwiftPackageReference "Factory" */;
 			productName = Factory;
+		};
+		39BDC3852AC69CCC00FD3080 /* ReSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39BDC3842AC69CCC00FD3080 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
