@@ -11,9 +11,9 @@ import Combine
 
 class AuthViewModel: ObservableObject{
     
-    init(appState : AppState) {
-        self.appState = appState
-    }
+//    init() {
+//        
+//    }
     
     //@State private var name : String = "Qazeem Abiodun"
     
@@ -21,7 +21,7 @@ class AuthViewModel: ObservableObject{
     
     @Injected(\.repository) private var repository
 
-    func login( loginRequestData : LoginRequestData) async throws{
+    func login(loginRequestData : LoginRequestData) async throws{
         do{
            let res = try await repository.auth.login(requestData: loginRequestData)
                await MainActor.run {
