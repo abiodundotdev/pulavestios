@@ -12,25 +12,26 @@ import ReSwift
 struct PulavestApp: App {
     var theme = ThemeManager()
     @StateObject private var navigationState = NavigationState()
-    @StateObject private var appState = AppState(user: UserLoading())
+    @StateObject private var userSession = UserSession()
     
 
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $navigationState.routes){
-                LoginPage().navigationDestination(for: Routes.self) { route in
-                    switch route {
-                    case .login:
-                        LoginPage()
-                    case .register:
-                        RegisterPage()
-                    case .dashboard:
-                        Text("loginpage")
-                    case .invest:
-                        Text("loginpage")
-                    }
+                LoginPage()
+            }.navigationDestination(for: Routes.self) { route in
+                switch route {
+                case .login:
+                    LoginPage()
+                case .register:
+                    RegisterPage()
+                case .dashboard:
+                    Text("loginpage")
+                case .invest:
+                    Text("loginpage")
                 }
-            }.environmentObject(theme).environmentObject(navigationState).environmentObject(appState)
+            }
+            .environmentObject(theme).environmentObject(navigationState).environmentObject(userSession)
         }
     }
 }

@@ -10,30 +10,26 @@ import Factory
 import Combine
 
 class AuthViewModel: ObservableObject{
-    
-//    init() {
-//        
-//    }
-    
-    //@State private var name : String = "Qazeem Abiodun"
-    
-    var appState: AppState
-    
+    private var userSession : UserSession
+    init(userSession :  UserSession) {  self.userSession = userSession }
+            
     @Injected(\.repository) private var repository
 
     func login(loginRequestData : LoginRequestData) async throws{
         do{
            let res = try await repository.auth.login(requestData: loginRequestData)
-               await MainActor.run {
-                   appState.user = UserCompleted(value: res.user)
-               }
+                   userSession.user = res.user
            } catch {
-            await MainActor.run {
-                appState.user = UserError(message: error.localizedDescription)
-            }
+               print(error.localizedDescription)
         }
     }
     }
+
+
+class UserSession : ObservableObject {
+    @Published  var user : UserModel?
+    @Published  var token : String = ""
+}
 
 
 
@@ -79,3 +75,9 @@ extension UserState{
 func name(){
     var sub =  PassthroughSubject<String, Never>();
 }
+
+
+//
+//await MainActor.run {
+//
+//}
