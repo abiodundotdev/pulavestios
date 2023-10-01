@@ -15,6 +15,9 @@ struct RegisterPage :View {
     @State private var emailAddress : String = ""
     @State private var country : String = ""
     
+    @EnvironmentObject var navigator: NavigationState
+    @EnvironmentObject var appState: AppState
+    
     
     var body : some View {
         return ScrollView{
@@ -33,9 +36,11 @@ struct RegisterPage :View {
                         LabeledForm(label: "Country", value: $country)
                         10.vspacer
                         ContainedButton(title: "Register"){
-                            var task = Task{
-                              try await testHttpRequest()
-                            }
+                            print(appState.user)
+                            
+//                            var task = Task{
+//                              try await testHttpRequest()
+//                            }
                         
                         }
                     }

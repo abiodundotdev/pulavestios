@@ -13,6 +13,7 @@ struct PulavestApp: App {
     var theme = ThemeManager()
     @StateObject private var navigationState = NavigationState()
     @StateObject private var appState = AppState(user: UserLoading())
+    
 
     var body: some Scene {
         WindowGroup {

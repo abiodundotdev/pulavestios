@@ -38,7 +38,8 @@ struct LoginPage: View {
                 10.vspacer
                 ContainedButton(title: "Login" ) {
                     Task{
-                       // mainStore.subscribe(self)
+                        appState.user = UserError(message: "User has ans error")
+                        navigator.routes.append(Routes.register)                       // mainStore.subscribe(self)
                        // await handleSubmit()
                     }
                 }
