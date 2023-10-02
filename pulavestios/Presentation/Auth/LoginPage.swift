@@ -13,7 +13,7 @@ struct LoginPage: View {
     @EnvironmentObject var theme: ThemeManager
     @EnvironmentObject var navigator: NavigationState
     @EnvironmentObject var userSession : UserSession
-    @State private var showAlertDialogue : Bool
+    @State var showAlertDialogue : Bool = false
     
     @StateObject var  loginRequestData = LoginRequestData()
 

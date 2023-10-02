@@ -10,6 +10,8 @@ class LoginRequestData : ObservableObject,Codable{
     @Published var email : String = ""
     @Published var password : String = ""
     
+    init() { }
+    
     // Required initializer for decoding
       required init(from decoder: Decoder) throws {
           let container = try decoder.container(keyedBy: CodingKeys.self)
