@@ -51,6 +51,7 @@ struct LoginPage: View {
         }
         let loginreq = LoginRequestData(email: emailAddressController, password: passwordController)
         do {
+            //sd
             var _ = try await authViewModel.login(loginRequestData: loginreq)
             navigator.routes.append(Routes.register)
         }catch{
