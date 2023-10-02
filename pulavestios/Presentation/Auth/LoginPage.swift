@@ -13,48 +13,47 @@ struct LoginPage: View {
     @EnvironmentObject var theme: ThemeManager
     @EnvironmentObject var navigator: NavigationState
     @EnvironmentObject var userSession : UserSession
+    @State private var showAlertDialogue : Bool
     
-    @State private var emailAddressController : String = ""
-    @State private var passwordController : String = ""
+    @StateObject var  loginRequestData = LoginRequestData()
 
 
     var body: some View {
         return ScrollView(){
             VStack(alignment: .center){
-                Image("logo")
-                20.vspacer
-                HStack{
-                    Text("Welcome Back, ").font(.custom("outfit_thin", size: 25.0))
-                    Text("Tomiwa").font(.title).foregroundColor(.green)
-                }
-                Text("Kindly fill in the form to continue")
-                10.vspacer
-                LabeledForm(label: "Email address", value: $emailAddressController)
-                10.vspacer
-                LabeledSecureForm(label: "Password", value: $passwordController)
-                10.vspacer
-                ContainedButton(isLoading : true,title: "Login") {
-                    Task{
-                        //navigator.routes.append(Routes.register)                       // mainStore.subscribe(self)
-                        await handleSubmit()
+                    Image("logo")
+                    20.vspacer
+                    HStack{
+                        Text("Welcome Back, ").font(.custom("outfit_thin", size: 25.0))
+                        Text("Tomiwa").font(.title).foregroundColor(.green)
                     }
-                }
+                    Text("Kindly fill in the form to continue")
+                    10.vspacer
+                    LabeledForm(label: "Email address", value: $loginRequestData.email)
+                    10.vspacer
+                    LabeledSecureForm(label: "Password", value: $loginRequestData.password)
+                    10.vspacer
+                    ContainedButton(isLoading : true, title: "Login") {
+                        Task{
+                            await handleSubmit()
+                        }
+                    }
             }
-        }.padding(.all, 15.0)
+        }.padding(.all, 15.0).alert("Kindly check your email or password", isPresented: $showAlertDialogue) {
+            Button("Close", role: .cancel) { }
+        }
     }
     
     func handleSubmit() async {
         @StateObject var authViewModel = AuthViewModel(userSession);
-        guard (!emailAddressController.isEmpty && !passwordController.isEmpty) else {
-            print("Email or password cannot be empty")
+        guard (loginRequestData.isValid) else {
+            showAlertDialogue = true
             return;
         }
-        let loginreq = LoginRequestData(email: emailAddressController, password: passwordController)
-        do {
-            //sd
-            var _ = try await authViewModel.login(loginRequestData: loginreq)
+        do{
+            var _ = try await authViewModel.login(loginRequestData: loginRequestData)
             navigator.routes.append(Routes.register)
-        }catch{
+        }catch {
             print(error.localizedDescription);
         }
     }
@@ -87,7 +86,7 @@ struct LabeledSecureForm : View {
         VStack( alignment: .leading){
             Text(label).font(.caption)
             10.vspacer
-            SecureField(label, text: $value).textFieldStyle(RoundedBorderTextFieldStyle() )
+            SecureField(label, text: $value).textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }
 }
@@ -105,7 +104,7 @@ struct ContainedButton : View {
         Button(action: action){
             if(isLoading){
                 ProgressView()
-            }else {
+            }else{
                 Text(title)
             }
         }.disabled(disabled).frame(maxWidth: .infinity).padding([.horizontal, .vertical], 10.0).background(currentTheme.colors.primary).clipShape(RoundedRectangle(cornerRadius: currentTheme.shapes.mediumCornerRadius)).foregroundColor(.white)
