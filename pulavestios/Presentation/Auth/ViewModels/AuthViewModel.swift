@@ -11,7 +11,7 @@ import Combine
 
 class AuthViewModel: ObservableObject{
     private var userSession : UserSession
-    init(userSession :  UserSession) {  self.userSession = userSession }
+    init(_ userSession :  UserSession) {  self.userSession = userSession }
             
     @Injected(\.repository) private var repository
 

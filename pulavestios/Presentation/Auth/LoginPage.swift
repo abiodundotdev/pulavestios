@@ -12,14 +12,11 @@ struct LoginPage: View {
     
     @EnvironmentObject var theme: ThemeManager
     @EnvironmentObject var navigator: NavigationState
-    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var userSession : UserSession
     
     @State private var emailAddressController : String = ""
     @State private var passwordController : String = ""
-    
-    @State private var number : Int = 2
-    
-    @StateObject var authViewModel = AuthViewModel( appState: AppState(user: UserLoading()));
+
 
     var body: some View {
         return ScrollView(){
@@ -36,28 +33,29 @@ struct LoginPage: View {
                 10.vspacer
                 LabeledSecureForm(label: "Password", value: $passwordController)
                 10.vspacer
-                ContainedButton(title: "Login" ) {
+                ContainedButton(isLoading : true,title: "Login") {
                     Task{
-                        appState.user = UserError(message: "User has ans error")
-                        navigator.routes.append(Routes.register)                       // mainStore.subscribe(self)
-                       // await handleSubmit()
+                        //navigator.routes.append(Routes.register)                       // mainStore.subscribe(self)
+                        await handleSubmit()
                     }
                 }
-                //Text(authViewModel.user?.fullname ?? "N/A")
             }
-        }.padding(.all, 15.0).onAppear(
-           // mainStore.subscribe(self)
-        )
+        }.padding(.all, 15.0)
     }
     
     func handleSubmit() async {
+        @StateObject var authViewModel = AuthViewModel(userSession);
         guard (!emailAddressController.isEmpty && !passwordController.isEmpty) else {
             print("Email or password cannot be empty")
             return;
         }
         let loginreq = LoginRequestData(email: emailAddressController, password: passwordController)
-        try? await  authViewModel.login(loginRequestData: loginreq)
-        navigator.routes.append(Routes.register)
+        do {
+            var _ = try await authViewModel.login(loginRequestData: loginreq)
+            navigator.routes.append(Routes.register)
+        }catch{
+            print(error.localizedDescription);
+        }
     }
 }
 
@@ -88,20 +86,28 @@ struct LabeledSecureForm : View {
         VStack( alignment: .leading){
             Text(label).font(.caption)
             10.vspacer
-            SecureField(label, text: $value) .textFieldStyle(RoundedBorderTextFieldStyle() )
+            SecureField(label, text: $value).textFieldStyle(RoundedBorderTextFieldStyle() )
         }
     }
 }
 
 
 struct ContainedButton : View {
+    @State private var isAnimating: Bool = true
     @EnvironmentObject var theme: ThemeManager
     var disabled: Bool = false
+    var isLoading: Bool = false
     var title : String
     var action : VoidCallback
     var body  : some View {
         let currentTheme = self.theme.current
-        Button(title, action: action).disabled(disabled).frame(maxWidth: .infinity).padding([.horizontal, .vertical], 10.0).background(currentTheme.colors.primary).clipShape(RoundedRectangle(cornerRadius: currentTheme.shapes.mediumCornerRadius)).foregroundColor(.white)
+        Button(action: action){
+            if(isLoading){
+                ProgressView()
+            }else {
+                Text(title)
+            }
+        }.disabled(disabled).frame(maxWidth: .infinity).padding([.horizontal, .vertical], 10.0).background(currentTheme.colors.primary).clipShape(RoundedRectangle(cornerRadius: currentTheme.shapes.mediumCornerRadius)).foregroundColor(.white)
     }
 }
 
