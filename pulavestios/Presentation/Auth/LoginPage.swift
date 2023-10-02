@@ -19,6 +19,8 @@ struct LoginPage: View {
 
 
     var body: some View {
+        @StateObject var authViewModel = AuthViewModel(userSession);
+
         return ScrollView(){
             VStack(alignment: .center){
                     Image("logo")
@@ -33,9 +35,9 @@ struct LoginPage: View {
                     10.vspacer
                     LabeledSecureForm(label: "Password", value: $loginRequestData.password)
                     10.vspacer
-                    ContainedButton(isLoading : true, title: "Login") {
+                    ContainedButton(isLoading : authViewModel.isLoading, title: "Login") {
                         Task{
-                            await handleSubmit()
+                            await handleSubmit(authViewModel)
                         }
                     }
             }
@@ -44,14 +46,13 @@ struct LoginPage: View {
         }
     }
     
-    func handleSubmit() async {
-        @StateObject var authViewModel = AuthViewModel(userSession);
-        guard (loginRequestData.isValid) else {
+    func handleSubmit(_ avm : AuthViewModel) async {
+        guard (!loginRequestData.isValid) else {
             showAlertDialogue = true
             return;
         }
         do{
-            var _ = try await authViewModel.login(loginRequestData: loginRequestData)
+            var _ = try await avm.login(loginRequestData: loginRequestData)
             navigator.routes.append(Routes.register)
         }catch {
             print(error.localizedDescription);

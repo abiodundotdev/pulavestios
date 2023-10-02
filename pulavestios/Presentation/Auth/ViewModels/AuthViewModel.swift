@@ -10,12 +10,16 @@ import Factory
 import Combine
 
 class AuthViewModel: ObservableObject{
+    @Published var isLoading : Bool = false
+    
     private var userSession : UserSession
     init(_ userSession :  UserSession) {  self.userSession = userSession }
             
     @Injected(\.repository) private var repository
 
     func login(loginRequestData : LoginRequestData) async throws{
+        isLoading = true
+        defer { isLoading = false }
         do{
            let res = try await repository.auth.login(requestData: loginRequestData)
                    userSession.user = res.user
