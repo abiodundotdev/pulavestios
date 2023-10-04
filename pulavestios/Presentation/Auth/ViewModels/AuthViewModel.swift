@@ -13,6 +13,7 @@ class AuthViewModel: ObservableObject{
     @Published var isLoading : Bool = false
     
     private var userSession : UserSession
+    
     init(_ userSession :  UserSession) {  self.userSession = userSession }
             
     @Injected(\.repository) private var repository

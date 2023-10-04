@@ -15,11 +15,11 @@ struct LoginPage: View {
     @EnvironmentObject var userSession : UserSession
     @State var showAlertDialogue : Bool = false
     
-    @StateObject var  loginRequestData = LoginRequestData()
-
 
     var body: some View {
         @StateObject var authViewModel = AuthViewModel(userSession);
+        @StateObject var  loginRequestData = LoginRequestData()
+
 
         return ScrollView(){
             VStack(alignment: .center){
@@ -37,7 +37,16 @@ struct LoginPage: View {
                     10.vspacer
                     ContainedButton(isLoading : authViewModel.isLoading, title: "Login") {
                         Task{
-                            await handleSubmit(authViewModel)
+                            guard (!loginRequestData.isValid) else {
+                                showAlertDialogue = true
+                                return;
+                            }
+                            do{
+                                var _ = try await authViewModel.login(loginRequestData: loginRequestData)
+                                navigator.routes.append(Routes.register)
+                            } catch {
+                                print(error.localizedDescription);
+                            }
                         }
                     }
             }
@@ -46,18 +55,18 @@ struct LoginPage: View {
         }
     }
     
-    func handleSubmit(_ avm : AuthViewModel) async {
-        guard (!loginRequestData.isValid) else {
-            showAlertDialogue = true
-            return;
-        }
-        do{
-            var _ = try await avm.login(loginRequestData: loginRequestData)
-            navigator.routes.append(Routes.register)
-        }catch {
-            print(error.localizedDescription);
-        }
-    }
+//    func handleSubmit(_ avm : AuthViewModel) async {
+//        guard (!loginRequestData.isValid) else {
+//            showAlertDialogue = true
+//            return;
+//        }
+//        do{
+//            var _ = try await avm.login(loginRequestData: loginRequestData)
+//            navigator.routes.append(Routes.register)
+//        }catch {
+//            print(error.localizedDescription);
+//        }
+//    }
 }
 
 
