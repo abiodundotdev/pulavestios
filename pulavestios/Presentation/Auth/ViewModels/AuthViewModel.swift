@@ -10,6 +10,7 @@ import Factory
 import Combine
 
 class AuthViewModel: ObservableObject{
+    
     @Published var isLoading : Bool = false
     
     private var userSession : UserSession

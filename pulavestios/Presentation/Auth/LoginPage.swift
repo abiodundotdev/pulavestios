@@ -14,12 +14,12 @@ struct LoginPage: View {
     @EnvironmentObject var navigator: NavigationState
     @EnvironmentObject var userSession : UserSession
     @State var showAlertDialogue : Bool = false
-    
+    @State var isLoading : Bool = false
+    @StateObject var  loginRequestData = LoginRequestData()
+
 
     var body: some View {
         @StateObject var authViewModel = AuthViewModel(userSession);
-        @StateObject var  loginRequestData = LoginRequestData()
-
 
         return ScrollView(){
             VStack(alignment: .center){
@@ -35,18 +35,11 @@ struct LoginPage: View {
                     10.vspacer
                     LabeledSecureForm(label: "Password", value: $loginRequestData.password)
                     10.vspacer
-                    ContainedButton(isLoading : authViewModel.isLoading, title: "Login") {
+                    ContainedButton(isLoading : isLoading, title: "Login") {
                         Task{
-                            guard (!loginRequestData.isValid) else {
-                                showAlertDialogue = true
-                                return;
-                            }
-                            do{
-                                var _ = try await authViewModel.login(loginRequestData: loginRequestData)
-                                navigator.routes.append(Routes.register)
-                            } catch {
-                                print(error.localizedDescription);
-                            }
+                            isLoading.toggle()
+                            await handleSubmit(authViewModel)
+                            isLoading.toggle()
                         }
                     }
             }
@@ -55,18 +48,18 @@ struct LoginPage: View {
         }
     }
     
-//    func handleSubmit(_ avm : AuthViewModel) async {
-//        guard (!loginRequestData.isValid) else {
-//            showAlertDialogue = true
-//            return;
-//        }
-//        do{
-//            var _ = try await avm.login(loginRequestData: loginRequestData)
-//            navigator.routes.append(Routes.register)
-//        }catch {
-//            print(error.localizedDescription);
-//        }
-//    }
+    func handleSubmit(_ avm : AuthViewModel) async {
+        guard (!loginRequestData.isValid) else {
+            showAlertDialogue = true
+            return;
+        }
+        do{
+            var _ = try await avm.login(loginRequestData: loginRequestData)
+            navigator.routes.append(Routes.register)
+        }catch {
+            print(error.localizedDescription);
+        }
+    }
 }
 
 
@@ -103,7 +96,7 @@ struct LabeledSecureForm : View {
 
 
 struct ContainedButton : View {
-    @State private var isAnimating: Bool = true
+    @State private var isAnimating: Bool = false
     @EnvironmentObject var theme: ThemeManager
     var disabled: Bool = false
     var isLoading: Bool = false
@@ -111,13 +104,20 @@ struct ContainedButton : View {
     var action : VoidCallback
     var body  : some View {
         let currentTheme = self.theme.current
-        Button(action: action){
+        Button(action: {
+            isAnimating.toggle()
+            let delayInSeconds = 0.1 // The delay duration in seconds
+            DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
+                isAnimating.toggle()
+            }
+         action()
+        }){
             if(isLoading){
                 ProgressView()
             }else{
                 Text(title)
             }
-        }.disabled(disabled).frame(maxWidth: .infinity).padding([.horizontal, .vertical], 10.0).background(currentTheme.colors.primary).clipShape(RoundedRectangle(cornerRadius: currentTheme.shapes.mediumCornerRadius)).foregroundColor(.white)
+        }.disabled(disabled).frame(maxWidth: .infinity).padding([.horizontal, .vertical], 10.0).background(currentTheme.colors.primary).clipShape(RoundedRectangle(cornerRadius: currentTheme.shapes.mediumCornerRadius)).foregroundColor(.white).scaleEffect(isAnimating ? 0.9 : 1.0)
     }
 }
 
