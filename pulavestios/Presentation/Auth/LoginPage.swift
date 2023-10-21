@@ -66,7 +66,6 @@ struct LoginPage: View {
 struct LoginPage_Previews: PreviewProvider {
     static var previews: some View {
         LoginPage().environmentObject(ThemeManager())
-        //spage
     }
 }
 
